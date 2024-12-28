@@ -138,9 +138,9 @@ const App = () => {
     {
       category: "AI & Machine Learning",
       skills: [
-        "LLM Implementation (OpenAI, LangChain, Gemini, Claude)",
+        "LLM Implementation",
         "RAG Systems Development",
-        "Machine Learning Model Development (TensorFlow, PyTorch, Scikit-learn)",
+        "Machine Learning Model Development",
       ]
     },
     {
@@ -241,19 +241,17 @@ const App = () => {
   ];
 
   const UserContent = () => (
-    <div className="flex-1 bg-gray-800 p-12 overflow-y-auto">
-      {/* About Section */}
-      <div className="mb-12 max-w-3xl">
-        <h2 className="text-3xl font-bold mb-4 text-white">About Me 👋🏽</h2>
-        <p className="text-gray-300 leading-relaxed text-lg">
+    <div className="bg-gray-800 p-4 md:p-12">
+      <div className="mb-8 md:mb-12 max-w-3xl">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">About Me 👋🏽</h2>
+        <p className="text-gray-300 leading-relaxed text-base md:text-lg">
           {profileData.bio}
         </p>
       </div>
 
-      {/* Contact Information */}
-      <div className="mb-12 max-w-3xl">
-        <h2 className="text-3xl font-bold mb-6 text-white">Contact</h2>
-        <div className="grid grid-cols-2 gap-6">
+      <div className="mb-8 md:mb-12 max-w-3xl">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">Contact</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <MapPin className="text-emerald-400" size={20} />
@@ -282,10 +280,9 @@ const App = () => {
         </div>
       </div>
 
-      {/* Technical Skills Section */}
       <div className="max-w-3xl">
-        <h2 className="text-3xl font-bold mb-6 text-white">Areas of Expertise</h2>
-        <div className="space-y-6">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">Areas of Expertise</h2>
+        <div className="space-y-4 md:space-y-6">
           {technicalSkills.map((category, index) => (
             <div key={index} className="bg-gray-700/50 p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-emerald-400 mb-4">{category.category}</h3>
@@ -302,8 +299,7 @@ const App = () => {
   );
 
   const ResumeContent = () => (
-    <div className="flex-1 bg-gray-800 p-12 overflow-y-auto">
-      {/* Experience Section */}
+    <div className="bg-gray-800 p-4 md:p-12">
       <div className="mb-12 max-w-3xl">
         <h2 className="text-3xl font-bold mb-6 text-white">Experience</h2>
         <div className="space-y-6">
@@ -322,7 +318,6 @@ const App = () => {
         </div>
       </div>
 
-      {/* Education Section */}
       <div className="mb-12 max-w-3xl">
         <h2 className="text-3xl font-bold mb-6 text-white">Education</h2>
         <div className="space-y-6">
@@ -341,20 +336,20 @@ const App = () => {
         </div>
       </div>
 
-      {/* Skills Section */}
       <SkillsSection />
     </div>
   );
 
   const SkillsSection = () => (
     <div className="max-w-3xl">
-      <h2 className="text-3xl font-bold mb-6 text-white">Technical Skills</h2>
-      {/* Visual Skills - Updated to 4 items per row */}
-      <div className="grid grid-cols-4 gap-8 mb-12 p-2 justify-items-center">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">Technical Skills</h2>
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-12 p-2 justify-items-center">
         {skills.map((skill, index) => (
           <div key={index} className="text-center">
-            {skill.element}
-            <p className="mt-4 text-gray-300 text-lg">{skill.name}</p>
+            <div className="w-24 h-24 md:w-24 md:h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
+              <img src={skill.element.props.children.props.src} alt={skill.name} className="w-full h-full object-contain" />
+            </div>
+            <p className="mt-2 md:mt-4 text-gray-300 text-base md:text-lg">{skill.name}</p>
           </div>
         ))}
       </div>
@@ -362,18 +357,17 @@ const App = () => {
   );
 
   const ProjectsContent = () => (
-    <div className="flex-1 bg-gray-800 p-12 overflow-y-auto">
-      <h2 className="text-3xl font-bold mb-6 text-white">Projects</h2>
-      <div className="grid grid-cols-1 gap-6 max-w-3xl">
+    <div className="bg-gray-800 p-4 md:p-12">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">Projects</h2>
+      <div className="grid grid-cols-1 gap-4 md:gap-6 max-w-3xl">
         {projects.map((project, index) => (
-          <div key={index} className="bg-gray-700/50 p-6 rounded-lg overflow-hidden">
-            <div className="flex gap-6 h-full">
-              <div className="w-48 flex-shrink-0">
+          <div key={index} className="bg-gray-700/50 p-4 md:p-6 rounded-lg overflow-hidden">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+              <div className="w-full md:w-48 h-48 md:h-auto flex-shrink-0">
                 <img 
                   src={project.image} 
                   alt={project.title}
                   className="w-full h-full object-cover rounded-lg"
-                  style={{ minHeight: '100%' }}
                 />
               </div>
               <div className="flex-1">
@@ -398,25 +392,26 @@ const App = () => {
   );
 
   return (
-    <div className="h-screen bg-gray-900 flex justify-center items-center p-4" style={{backgroundColor: '#111827'}}>
-      <div className="max-w-7xl w-full h-[85vh] flex shadow-2xl rounded-lg overflow-hidden">
-        {/* Sidebar */}
-        <div className="w-16 bg-gray-800 flex flex-col justify-center items-center">
-          <nav className="space-y-8">
+    <div className="min-h-screen bg-gray-900 flex justify-center items-center p-2 md:p-4" style={{backgroundColor: '#111827'}}>
+      <div className="w-full max-w-7xl h-[calc(100vh-1rem)] md:h-[85vh] flex flex-col md:flex-row shadow-2xl rounded-lg overflow-hidden">
+        {/* Navigation for desktop - left side */}
+        <div className="hidden md:flex h-full w-14 bg-gray-800 flex-col justify-center items-center relative">
+          <div className="absolute top-0 right-0 bottom-0 w-[1px] bg-gradient-to-b from-gray-800 via-emerald-400/30 to-gray-800" />
+          <nav className="flex flex-col space-y-8">
             <button 
-              className={`${activeTab === 'user' ? 'text-emerald-400' : 'text-gray-400'} hover:text-emerald-300 block`}
+              className={`${activeTab === 'user' ? 'text-emerald-400' : 'text-gray-400'} hover:text-emerald-300 block transition-colors duration-200 p-2`}
               onClick={() => setActiveTab('user')}
             >
               <User strokeWidth={2} />
             </button>
             <button 
-              className={`${activeTab === 'resume' ? 'text-emerald-400' : 'text-gray-400'} hover:text-emerald-300 block`}
+              className={`${activeTab === 'resume' ? 'text-emerald-400' : 'text-gray-400'} hover:text-emerald-300 block transition-colors duration-200 p-2`}
               onClick={() => setActiveTab('resume')}
             >
               <Briefcase strokeWidth={2} />
             </button>
             {/* <button 
-              className={`${activeTab === 'projects' ? 'text-emerald-400' : 'text-gray-400'} hover:text-emerald-300 block`}
+              className={`${activeTab === 'projects' ? 'text-emerald-400' : 'text-gray-400'} hover:text-emerald-300 block transition-colors duration-200 p-2`}
               onClick={() => setActiveTab('projects')}
             >
               <Code strokeWidth={2} />
@@ -424,34 +419,55 @@ const App = () => {
           </nav>
         </div>
 
-        {/* Main Content */}
-        <div className="flex-1">
-          <div className="flex h-full">
-            {/* Left Profile Section - Dark Background */}
-            <div className="w-[400px] bg-gray-900 relative">
-              <div className="absolute inset-0">
-                <img
-                  src={profileImage}
-                  alt="Profile"
-                  className="w-full h-full object-cover opacity-90"
-                />
-                {/* Enhanced gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900"></div>
-              </div>
-              <div className="absolute bottom-12 left-0 right-0 text-center px-6">
-                <h1 className="text-4xl font-bold mb-4 text-white tracking-wide">{profileData.name}</h1>
-                <p className="text-emerald-400 text-xl tracking-wider">{profileData.title}</p>
-              </div>
-              
-              {/* Enhanced Vertical Divider */}
-              <div className="absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-gray-800 via-emerald-400/30 to-gray-800"></div>
+        <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+          <div className="shrink-0 h-[300px] md:h-auto md:w-[400px] bg-gray-900 relative">
+            <div className="absolute inset-0">
+              <img
+                src={profileImage}
+                alt="Profile"
+                className="w-full h-full object-cover object-top md:object-center opacity-90"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900"></div>
             </div>
+            <div className="absolute bottom-4 md:bottom-12 left-0 right-0 text-center px-4 md:px-6">
+              <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 text-white tracking-wide">{profileData.name}</h1>
+              <p className="text-lg md:text-xl text-emerald-400 tracking-wider">{profileData.title}</p>
+            </div>
+            
+            <div className="absolute right-0 top-0 h-full w-[2px] md:w-[4px] bg-gradient-to-b from-gray-800 via-emerald-400/30 to-gray-800"></div>
+          </div>
 
-            {/* Dynamic Content Section */}
+          <div className="flex-1 overflow-y-auto">
             {activeTab === 'user' ? <UserContent /> : 
              activeTab === 'resume' ? <ResumeContent /> : 
              <ProjectsContent />}
           </div>
+        </div>
+
+        {/* Bottom navigation for mobile only */}
+        <div className="h-14 md:hidden bg-gray-800 flex justify-center items-center relative">
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-gray-800 via-emerald-400/30 to-gray-800" />
+          <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-black/20" />
+          <nav className="flex space-x-8">
+            <button 
+              className={`${activeTab === 'user' ? 'text-emerald-400' : 'text-gray-400'} hover:text-emerald-300 block transition-colors duration-200 p-2`}
+              onClick={() => setActiveTab('user')}
+            >
+              <User strokeWidth={2} />
+            </button>
+            <button 
+              className={`${activeTab === 'resume' ? 'text-emerald-400' : 'text-gray-400'} hover:text-emerald-300 block transition-colors duration-200 p-2`}
+              onClick={() => setActiveTab('resume')}
+            >
+              <Briefcase strokeWidth={2} />
+            </button>
+            {/* <button 
+              className={`${activeTab === 'projects' ? 'text-emerald-400' : 'text-gray-400'} hover:text-emerald-300 block transition-colors duration-200 p-2`}
+              onClick={() => setActiveTab('projects')}
+            >
+              <Code strokeWidth={2} />
+            </button> */}
+          </nav>
         </div>
       </div>
     </div>
