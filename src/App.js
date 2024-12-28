@@ -429,12 +429,17 @@ const App = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900"></div>
             </div>
-            <div className="absolute bottom-4 md:bottom-12 left-0 right-0 text-center px-4 md:px-6">
-              <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 text-white tracking-wide">{profileData.name}</h1>
-              <p className="text-lg md:text-xl text-emerald-400 tracking-wider">{profileData.title}</p>
+            <div className="absolute bottom-4 md:bottom-12 left-0 right-0 px-4 md:px-6">
+              <div className="hidden md:block text-center">
+                <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 text-white tracking-wide">{profileData.name}</h1>
+                <p className="text-lg md:text-xl text-emerald-400 tracking-wider">{profileData.title}</p>
+              </div>
+              {/* Mobile layout */}
+              <div className="flex justify-between md:hidden">
+                <h1 className="text-2xl font-bold text-white tracking-wide">{profileData.name}</h1>
+                <p className="text-lg text-emerald-400 tracking-wider">{profileData.title}</p>
+              </div>
             </div>
-            
-            <div className="absolute right-0 top-0 h-full w-[2px] md:w-[4px] bg-gradient-to-b from-gray-800 via-emerald-400/30 to-gray-800"></div>
           </div>
 
           <div className="flex-1 overflow-y-auto">
