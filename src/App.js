@@ -391,8 +391,8 @@ const App = () => {
     </div>
   );
 
-return (
-    <div className="h-screen w-screen bg-gray-900 flex justify-center items-center" style={{backgroundColor: '#111827'}}>
+  return (
+    <div className="h-screen w-screen bg-gray-900 flex justify-center items-center">
       <div className="w-full h-full md:max-w-7xl md:h-[85vh] flex flex-col md:flex-row shadow-2xl rounded-lg overflow-hidden">
         {/* Navigation for desktop - left side */}
         <div className="hidden md:flex h-full w-14 bg-gray-800 flex-col justify-center items-center relative">
@@ -414,8 +414,8 @@ return (
         </div>
 
         <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
-          {/* Fixed header for mobile */}
-          <div className="md:hidden h-48 bg-gray-900 relative">
+          {/* Mobile header - fixed height */}
+          <div className="md:hidden h-48 bg-gray-900 relative shrink-0">
             <div className="absolute inset-0">
               <img
                 src={profileImage}
@@ -450,16 +450,18 @@ return (
             </div>
           </div>
 
-          {/* Scrollable content area */}
-          <div className="flex-1 overflow-y-auto">
-            {activeTab === 'user' ? <UserContent /> : 
-             activeTab === 'resume' ? <ResumeContent /> : 
-             <ProjectsContent />}
+          {/* Scrollable content area with bottom padding on mobile */}
+          <div className="flex-1 overflow-y-auto pb-20 md:pb-0">
+            <div className="h-full">
+              {activeTab === 'user' ? <UserContent /> : 
+               activeTab === 'resume' ? <ResumeContent /> : 
+               <ProjectsContent />}
+            </div>
           </div>
         </div>
 
         {/* Fixed bottom navigation for mobile */}
-        <div className="md:hidden h-14 bg-gray-800 flex justify-center items-center fixed bottom-0 left-0 right-0">
+        <div className="md:hidden h-14 bg-gray-800 fixed bottom-0 left-0 right-0 flex justify-center items-center">
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-gray-800 via-emerald-400/30 to-gray-800" />
           <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-black/20" />
           <nav className="flex space-x-8">
