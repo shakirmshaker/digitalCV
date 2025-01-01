@@ -393,7 +393,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 flex justify-center items-center p-2 md:p-8 lg:p-12" style={{backgroundColor: '#111827'}}>
-      <div className="w-full max-w-7xl h-[calc(100vh-1rem)] md:h-[85vh] lg:h-[90vh] flex flex-col md:flex-row shadow-2xl rounded-lg overflow-hidden">
+      <div className="w-full max-w-7xl h-[calc(100vh-2rem)] md:h-[85vh] lg:h-[90vh] flex flex-col md:flex-row shadow-2xl rounded-lg overflow-hidden">
         {/* Navigation for desktop - left side */}
         <div className="hidden md:flex h-full w-14 bg-gray-800 flex-col justify-center items-center relative">
           <div className="absolute top-0 right-0 bottom-0 w-[1px] bg-gradient-to-b from-gray-800 via-emerald-400/30 to-gray-800" />
@@ -420,7 +420,7 @@ const App = () => {
         </div>
 
         <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
-          <div className="shrink-0 h-[300px] md:h-auto md:w-[400px] bg-gray-900 relative">
+          <div className="shrink-0 h-[200px] md:h-auto md:w-[400px] bg-gray-900 relative">
             <div className="absolute inset-0">
               <img
                 src={profileImage}
