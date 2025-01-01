@@ -435,9 +435,11 @@ const App = () => {
                   <p className="text-lg md:text-xl text-emerald-400 tracking-wider">{profileData.title}</p>
                 </div>
                 {/* Mobile layout */}
-                <div className="flex justify-between md:hidden">
-                  <h1 className="text-2xl font-bold text-white tracking-wide">{profileData.name}</h1>
-                  <p className="text-lg text-emerald-400 tracking-wider">{profileData.title}</p>
+                <div className="flex justify-end md:hidden">
+                  <div className="text-right">
+                    <h1 className="text-lg font-bold text-white tracking-wide">{profileData.name}</h1>
+                    <p className="text-sm text-emerald-400 tracking-wider">{profileData.title}</p>
+                  </div>
                 </div>
               </div>
             </div>
