@@ -24,7 +24,7 @@ import eddieImage from './projects/eddie.png';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('user');
-  const contentRef = useRef(null);
+  const scrollContainerRef = useRef(null);
   
   useEffect(() => {
     const options = {
@@ -35,23 +35,22 @@ const App = () => {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.target.classList.contains('content-wrapper')) {
-          if (!entry.isIntersecting) {
-            entry.target.style.paddingBottom = '3.5rem';
-          } else {
-            entry.target.style.paddingBottom = '1rem';
-          }
+        const container = entry.target;
+        if (!entry.isIntersecting) {
+          container.style.height = 'calc(100% - 3.5rem)';
+        } else {
+          container.style.height = '100%';
         }
       });
     }, options);
 
-    if (contentRef.current) {
-      observer.observe(contentRef.current);
+    if (scrollContainerRef.current) {
+      observer.observe(scrollContainerRef.current);
     }
 
     return () => {
-      if (contentRef.current) {
-        observer.unobserve(contentRef.current);
+      if (scrollContainerRef.current) {
+        observer.unobserve(scrollContainerRef.current);
       }
     };
   }, [activeTab]);
@@ -272,7 +271,7 @@ const App = () => {
   ];
 
   const UserContent = () => (
-    <div className="content-wrapper bg-gray-800 p-4 md:p-12" ref={contentRef}>
+    <div className="bg-gray-800 p-4 md:p-12">
       <div className="mb-8 md:mb-12 max-w-3xl">
         <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">About Me 👋🏽</h2>
         <p className="text-gray-300 leading-relaxed text-base md:text-lg">
@@ -330,7 +329,7 @@ const App = () => {
   );
 
   const ResumeContent = () => (
-    <div className="content-wrapper bg-gray-800 p-4 md:p-12" ref={contentRef}>
+    <div className="bg-gray-800 p-4 md:p-12">
       <div className="mb-12 max-w-3xl">
         <h2 className="text-3xl font-bold mb-6 text-white">Experience</h2>
         <div className="space-y-6">
@@ -388,7 +387,7 @@ const App = () => {
   );
 
   const ProjectsContent = () => (
-    <div className="content-wrapper bg-gray-800 p-4 md:p-12" ref={contentRef}>
+    <div className="bg-gray-800 p-4 md:p-12">
       <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">Projects</h2>
       <div className="grid grid-cols-1 gap-4 md:gap-6 max-w-3xl">
         {projects.map((project, index) => (
@@ -474,7 +473,7 @@ const App = () => {
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1 overflow-y-auto" ref={scrollContainerRef}>
               {activeTab === 'user' ? <UserContent /> : 
                activeTab === 'resume' ? <ResumeContent /> : 
                <ProjectsContent />}
