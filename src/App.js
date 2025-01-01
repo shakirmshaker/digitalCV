@@ -393,7 +393,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 flex justify-center items-center p-2 md:p-8 lg:p-12" style={{backgroundColor: '#111827'}}>
-      <div className="w-full max-w-7xl h-[calc(100vh-2rem)] md:h-[85vh] lg:h-[90vh] flex flex-col md:flex-row shadow-2xl rounded-lg overflow-hidden">
+      <div className="w-full max-w-7xl h-[calc(100vh-2rem)] md:h-[85vh] lg:h-[90vh] flex flex-col md:flex-row shadow-2xl rounded-lg overflow-hidden relative">
         {/* Navigation for desktop - left side */}
         <div className="hidden md:flex h-full w-14 bg-gray-800 flex-col justify-center items-center relative">
           <div className="absolute top-0 right-0 bottom-0 w-[1px] bg-gradient-to-b from-gray-800 via-emerald-400/30 to-gray-800" />
@@ -410,12 +410,6 @@ const App = () => {
             >
               <Briefcase strokeWidth={2} />
             </button>
-            {/* <button 
-              className={`${activeTab === 'projects' ? 'text-emerald-400' : 'text-gray-400'} hover:text-emerald-300 block transition-colors duration-200 p-2`}
-              onClick={() => setActiveTab('projects')}
-            >
-              <Code strokeWidth={2} />
-            </button> */}
           </nav>
         </div>
 
@@ -442,7 +436,7 @@ const App = () => {
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1 overflow-y-auto pb-14 md:pb-0">
             {activeTab === 'user' ? <UserContent /> : 
              activeTab === 'resume' ? <ResumeContent /> : 
              <ProjectsContent />}
@@ -450,7 +444,7 @@ const App = () => {
         </div>
 
         {/* Bottom navigation for mobile only */}
-        <div className="h-14 md:hidden bg-gray-800 flex justify-center items-center relative">
+        <div className="fixed md:hidden bottom-0 left-0 right-0 h-14 bg-gray-800 flex justify-center items-center">
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-gray-800 via-emerald-400/30 to-gray-800" />
           <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-black/20" />
           <nav className="flex space-x-8">
@@ -466,12 +460,6 @@ const App = () => {
             >
               <Briefcase strokeWidth={2} />
             </button>
-            {/* <button 
-              className={`${activeTab === 'projects' ? 'text-emerald-400' : 'text-gray-400'} hover:text-emerald-300 block transition-colors duration-200 p-2`}
-              onClick={() => setActiveTab('projects')}
-            >
-              <Code strokeWidth={2} />
-            </button> */}
           </nav>
         </div>
       </div>
