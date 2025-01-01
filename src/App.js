@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { User, Briefcase, Mail, Phone, MapPin, Linkedin, Github, Code } from 'lucide-react';
 import profileImage from './shakirmshakerLinkedInBillede.jpeg';
 
@@ -24,7 +24,38 @@ import eddieImage from './projects/eddie.png';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('user');
+  const contentRef = useRef(null);
   
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.target.classList.contains('content-wrapper')) {
+          if (!entry.isIntersecting) {
+            entry.target.style.paddingBottom = '3.5rem';
+          } else {
+            entry.target.style.paddingBottom = '1rem';
+          }
+        }
+      });
+    }, options);
+
+    if (contentRef.current) {
+      observer.observe(contentRef.current);
+    }
+
+    return () => {
+      if (contentRef.current) {
+        observer.unobserve(contentRef.current);
+      }
+    };
+  }, [activeTab]);
+
   const profileData = {
     name: "Shakir M. Shaker",
     title: "AI Engineer",
@@ -241,7 +272,7 @@ const App = () => {
   ];
 
   const UserContent = () => (
-    <div className="bg-gray-800 p-4 pb-20 md:p-12">
+    <div className="content-wrapper bg-gray-800 p-4 md:p-12" ref={contentRef}>
       <div className="mb-8 md:mb-12 max-w-3xl">
         <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">About Me 👋🏽</h2>
         <p className="text-gray-300 leading-relaxed text-base md:text-lg">
@@ -299,7 +330,7 @@ const App = () => {
   );
 
   const ResumeContent = () => (
-    <div className="bg-gray-800 p-4 pb-20 md:p-12">
+    <div className="content-wrapper bg-gray-800 p-4 md:p-12" ref={contentRef}>
       <div className="mb-12 max-w-3xl">
         <h2 className="text-3xl font-bold mb-6 text-white">Experience</h2>
         <div className="space-y-6">
@@ -357,7 +388,7 @@ const App = () => {
   );
 
   const ProjectsContent = () => (
-    <div className="bg-gray-800 p-4 pb-20 md:p-12">
+    <div className="content-wrapper bg-gray-800 p-4 md:p-12" ref={contentRef}>
       <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">Projects</h2>
       <div className="grid grid-cols-1 gap-4 md:gap-6 max-w-3xl">
         {projects.map((project, index) => (
