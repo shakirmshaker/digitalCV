@@ -392,7 +392,7 @@ const App = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-900 flex justify-center items-stretch p-2 md:p-8 lg:p-12" style={{backgroundColor: '#111827'}}>
+    <div className="h-screen bg-gray-900 flex justify-center items-stretch p-2 md:p-8 lg:p-12 overflow-hidden" style={{backgroundColor: '#111827'}}>
       <div className="w-full max-w-7xl flex flex-col md:flex-row shadow-2xl rounded-lg overflow-hidden relative md:h-[85vh] lg:h-[90vh]">
         {/* Navigation for desktop - left side */}
         <div className="hidden md:flex h-full w-14 bg-gray-800 flex-col justify-center items-center relative">
@@ -413,7 +413,7 @@ const App = () => {
           </nav>
         </div>
 
-        <div className="flex-1 flex flex-col md:flex-row overflow-hidden h-screen md:h-auto">
+        <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
           <div className="shrink-0 h-[200px] md:h-auto md:w-[400px] bg-gray-900 relative">
             <div className="absolute inset-0">
               <img
@@ -436,7 +436,7 @@ const App = () => {
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto h-[calc(100vh-200px-3.5rem)] md:h-auto pb-14 md:pb-0">
+          <div className="flex-1 overflow-y-auto h-[calc(100vh-200px-3.5rem-1rem)] md:h-auto pb-14 md:pb-0">
             {activeTab === 'user' ? <UserContent /> : 
              activeTab === 'resume' ? <ResumeContent /> : 
              <ProjectsContent />}
@@ -444,7 +444,7 @@ const App = () => {
         </div>
 
         {/* Bottom navigation for mobile only */}
-        <div className="fixed md:hidden bottom-0 left-0 right-0 h-14 bg-gray-800 flex justify-center items-center">
+        <div className="fixed md:hidden bottom-2 left-2 right-2 h-14 bg-gray-800 flex justify-center items-center rounded-lg">
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-gray-800 via-emerald-400/30 to-gray-800" />
           <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-black/20" />
           <nav className="flex space-x-8">
