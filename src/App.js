@@ -165,13 +165,13 @@ const App = () => {
     {
       title: "AI Engineer",
       company: "Modstrøm",
-      period: "Present",
+      period: "2023 - Present",
       description: "As AI Lead, I drove enterprise-wide transformation through LLM integration and strategic C-suite collaboration. Led implementation of large language models across business units while aligning technical capabilities with organizational objectives, establishing data-driven and AI-augmented decision making throughout the company."
     },
     {
       title: "Founder",
       company: "Lexi",
-      period: "Present",
+      period: "",
       description: "Architected and developed an AI-powered email client that revolutionizes inbox management through deep LLM integration. Built and deployed sophisticated vector search capabilities and natural language processing systems that enable contextual email understanding and intelligent responses."
     },
     {
@@ -198,14 +198,15 @@ const App = () => {
     {
       degree: "Master of Engineering - Human-Centered Artificial Intelligence",
       school: "Technical University of Denmark",
-      period: "2023 - 2025",
+      period: "",
+      // Completed degree on schedule while maintaining full-time professional role
       description: "Focusing on the intersection of AI, human-interaction, and Large Language Models."
     },
     {
       degree: "Bachelor of Science - Data Science",
       school: "IT University of Copenhagen",
-      period: "2020 - 2022",
-      description: "Specialized in machine learning, data visualization, and data-driven decision-making."
+      period: "",
+      description: "Specialized in machine learning, data visualization, and data-driven decision-making. Completed the degree in 1 year and 9 months."
     }
   ];
 
