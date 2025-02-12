@@ -163,14 +163,14 @@ const App = () => {
 
   const experience = [
     {
-      title: "AI Engineer",
+      title: "AI Lead",
       company: "Modstrøm",
       period: "2023 - Present",
       description: "As AI Lead, I drove enterprise-wide transformation through LLM integration and strategic C-suite collaboration. Led implementation of large language models across business units while aligning technical capabilities with organizational objectives, establishing data-driven and AI-augmented decision making throughout the company."
     },
     {
       title: "Founder",
-      company: "Lexi",
+      company: "Subvenia",
       period: "",
       description: "Architected and developed an AI-powered email client that revolutionizes inbox management through deep LLM integration. Built and deployed sophisticated vector search capabilities and natural language processing systems that enable contextual email understanding and intelligent responses."
     },
