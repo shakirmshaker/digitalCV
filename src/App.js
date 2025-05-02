@@ -163,10 +163,10 @@ const App = () => {
 
   const experience = [
     {
-      title: "AI Lead",
+      title: "Head of AI",
       company: "Modstrøm",
       period: "2023 - Present",
-      description: "As AI Lead, I drove enterprise-wide transformation through LLM integration and strategic C-suite collaboration. Led implementation of large language models across business units while aligning technical capabilities with organizational objectives, establishing data-driven and AI-augmented decision making throughout the company."
+      description: "As Head of AI, I drove enterprise-wide transformation through LLM integration and strategic C-suite collaboration. Led implementation of large language models across business units while aligning technical capabilities with organizational objectives, establishing data-driven and AI-augmented decision making throughout the company."
     },
     {
       title: "Founder",
