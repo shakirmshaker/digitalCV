@@ -170,8 +170,8 @@ const App = () => {
     },
     {
       title: "Founder",
-      company: "Subvenia",
-      period: "",
+      company: "Lexi Technologies",
+      period: "2023 - Present",
       description: "Architected and developed an AI-powered email client that revolutionizes inbox management through deep LLM integration. Built and deployed sophisticated vector search capabilities and natural language processing systems that enable contextual email understanding and intelligent responses."
     },
     {
