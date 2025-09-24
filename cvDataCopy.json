@@ -1,0 +1,83 @@
+{
+  "profileData": {
+    "name": "Shakir M. Shaker",
+    "title": "AI Engineer",
+    "location": "Copenhagen, Denmark",
+    "email": "shakir.m.shaker@gmail.com",
+    "phone": "+45 50 41 42 87",
+    "linkedin": "www.linkedin.com/in/shakir-m-shaker-3212a8168",
+    "bio": "Hi, I'm Shakir. I specialize in creating innovative solutions at the crossroads of AI, data science, and business strategy. With a passion for turning complex AI concepts into real-world impact, I thrive in dynamic environments, delivering cutting-edge, data-driven solutions that drive measurable business outcomes. I excel at collaborating with teams to push technological boundaries, leveraging emerging tools and methodologies to help organizations stay ahead in an AI-driven world."
+  },
+  "technicalSkills": [
+    {
+      "category": "AI & Machine Learning",
+      "skills": [
+        "LLM Implementation",
+        "RAG Systems Development",
+        "Machine Learning Model Development"
+      ]
+    },
+    {
+      "category": "Backend Development",
+      "skills": [
+        "LLM Application Architecture",
+        "API Development",
+        "Web Application Backend"
+      ]
+    },
+    {
+      "category": "Data Engineering",
+      "skills": [
+        "Postgres & Snowflake",
+        "PowerBI & Tableau",
+        "Pandas & Spark"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Head of AI",
+      "company": "Modstrøm",
+      "period": "2023 - Present",
+      "description": "As Head of AI, I drove enterprise-wide transformation through LLM integration and strategic C-suite collaboration. Led implementation of large language models across business units while aligning technical capabilities with organizational objectives, establishing data-driven and AI-augmented decision making throughout the company."
+    },
+    {
+      "title": "Founder",
+      "company": "Lexi Technologies",
+      "period": "2023 - Present",
+      "description": "Architected and developed an AI-powered email client that revolutionizes inbox management through deep LLM integration. Built and deployed sophisticated vector search capabilities and natural language processing systems that enable contextual email understanding and intelligent responses."
+    },
+    {
+      "title": "AI Engineer",
+      "company": "Medley VC",
+      "period": "2022 - 2023",
+      "description": "Engaged with teams to raise awareness of AI potential, ensuring users understood AI capabilities and limitations in their day-today operations. Identified and refined use cases for AI tools in business intelligence and energy recommendations, contributing to operational efficiency and improved decision-making."
+    },
+    {
+      "title": "Research Assistant",
+      "company": "Hvidovre Hospital",
+      "period": "2022",
+      "description": "Developed and implemented machine learning models to predict short and long-term mortality in acutely hospitalized patients. Led the technical development and data analysis that resulted in a published research paper. Applied sophisticated ML techniques to analyze patient data and create predictive models with direct clinical applications."
+    },
+    {
+      "title": "Associate",
+      "company": "KPMG",
+      "period": "2021 - 2022",
+      "description": "Advised top-tier clients on AI and data science strategies, focusing on improving quality processes and operational efficiency through automation and data-driven insights. Collaborated closely with clients to identify AI use cases and deploy tailored AI tools that addressed specific business challenges."
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Engineering - Human-Centered Artificial Intelligence",
+      "school": "Technical University of Denmark",
+      "period": "",
+      "description": "Focusing on the intersection of AI, human-interaction, and Large Language Models. Completed in 2 years next to my full-time job. Thesis Grade: 12/12, GPA: 10.1/12"
+    },
+    {
+      "degree": "Bachelor of Science - Data Science",
+      "school": "IT University of Copenhagen",
+      "period": "",
+      "description": "Specialized in machine learning, data visualization, and data-driven decision-making. Completed the degree in 1 year and 9 months."
+    }
+  ]
+}
