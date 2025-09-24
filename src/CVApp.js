@@ -319,7 +319,7 @@ const CVApp = ({ isAuthenticated }) => {
       } else {
         console.log('Data saved successfully:', result);
         if (isVercel) {
-          alert('Changes saved successfully to GitHub repository! The changes will be reflected after the next deployment.');
+          alert('Changes saved successfully to GitHub repository! Your changes are now live.');
         } else {
           alert('Changes saved successfully to the JSON file!');
           // Try to refresh data after saving, but don't fail if it doesn't work
@@ -760,12 +760,13 @@ const CVApp = ({ isAuthenticated }) => {
       const isLocalhost = window.location.hostname === 'localhost' ||
                          window.location.hostname === '127.0.0.1';
 
-      // Use API endpoint on localhost to get fresh data from server
+      // Always fetch from GitHub via API endpoint for fresh data
+      // On localhost, use local server; on Vercel, use the API endpoint
       const fetchUrl = isLocalhost
         ? `http://localhost:3001/api/cv-data?t=${Date.now()}`
-        : `/data/cvData.json?t=${Date.now()}`;
+        : `/api/get-cv-data?t=${Date.now()}`;
 
-      console.log('Fetching from:', fetchUrl);
+      console.log('Fetching fresh data from GitHub via:', fetchUrl);
 
       const response = await fetch(fetchUrl, {
         cache: 'no-cache',
