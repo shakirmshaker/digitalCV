@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { User, Briefcase, Mail, Phone, MapPin, Linkedin, Github, Edit, Save, X, Plus, Trash2, Download, RefreshCw } from 'lucide-react';
+import { User, Briefcase, Mail, Phone, MapPin, Linkedin, Github, Edit, Save, X, Plus, Trash2, Download } from 'lucide-react';
 import jsPDF from 'jspdf';
 import profileImage from './shakirmshakerLinkedInBillede.jpeg';
 // Dynamic import - removed static import to prevent caching
@@ -1026,12 +1026,25 @@ const CVApp = ({ isAuthenticated }) => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <Linkedin className="text-emerald-400" size={20} />
-              <EditableText
-                value={cvData.profileData.linkedin}
-                onChange={(value) => updateProfileData('linkedin', value)}
-                className="text-gray-300"
-                id="profile-linkedin"
-              />
+              {isEditMode ? (
+                <EditableText
+                  value={cvData.profileData.linkedin}
+                  onChange={(value) => updateProfileData('linkedin', value)}
+                  className="text-gray-300"
+                  id="profile-linkedin"
+                />
+              ) : (
+                <a
+                  href={cvData.profileData.linkedin.startsWith('http')
+                    ? cvData.profileData.linkedin
+                    : `https://${cvData.profileData.linkedin}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-emerald-400 underline transition-colors duration-200"
+                >
+                  LinkedIn Profile
+                </a>
+              )}
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="text-emerald-400" size={20} />
@@ -1266,13 +1279,6 @@ const CVApp = ({ isAuthenticated }) => {
                       <Save strokeWidth={2} />
                     </button>
                   )}
-                  <button
-                    onClick={refreshData}
-                    className="text-gray-400 hover:text-emerald-300 transition-colors duration-200 p-2"
-                    title="Refresh Data"
-                  >
-                    <RefreshCw strokeWidth={2} />
-                  </button>
                 </div>
               )}
             </nav>
@@ -1369,13 +1375,6 @@ const CVApp = ({ isAuthenticated }) => {
                   <Save strokeWidth={2} />
                 </button>
               )}
-              <button
-                onClick={refreshData}
-                className="text-gray-400 hover:text-emerald-300 transition-colors duration-200 p-2"
-                title="Refresh Data"
-              >
-                <RefreshCw strokeWidth={2} />
-              </button>
             </>
           )}
         </nav>
