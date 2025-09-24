@@ -45,7 +45,7 @@
       "title": "Founder",
       "company": "Lexi Technologies",
       "period": "2023 - Present",
-      "description": "Architected and developed an AI-powered email client that revolutionizes inbox management through deep LLM integration. Built and deployed sophisticated vector search capabilities and natural language processing systems that enable contextual email understanding and intelligent responses."
+      "description": "- Solo-architected and deployed end-to-end AI email client serving currently 50+ daily active users\n- Built production-grade personalization engine using LLMs and vector search for contextual email understanding\n- Managed entire product lifecycle from conception through deployment, including user feedback integration and iterative improvements"
     },
     {
       "title": "AI Engineer",
@@ -80,7 +80,7 @@
       "description": "Specialized in machine learning, data visualization, and data-driven decision-making. Completed the degree in 1 year and 9 months."
     }
   ],
-  "lastSaved": "2025-09-24T07:09:58.361Z",
+  "lastSaved": "2025-09-24T07:12:10.283Z",
   "_metadata": {
     "fetchedAt": "2025-09-24T07:08:21.231Z",
     "source": "github-api",
