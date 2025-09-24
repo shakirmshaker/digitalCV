@@ -43,7 +43,7 @@
     },
     {
       "title": "Founder",
-      "company": "Lexi Technologies",
+      "company": "Lexii",
       "period": "2023 - Present",
       "description": "- Solo-architected and deployed end-to-end AI email client serving currently 50+ daily active users\n- Built production-grade personalization engine using LLMs and vector search for contextual email understanding\n- Managed entire product lifecycle from conception through deployment, including user feedback integration and iterative improvements"
     },
@@ -80,7 +80,7 @@
       "description": "Specialized in machine learning, data visualization, and data-driven decision-making. Completed the degree in 1 year and 9 months."
     }
   ],
-  "lastSaved": "2025-09-24T07:12:10.283Z",
+  "lastSaved": "2025-09-24T07:14:47.519Z",
   "_metadata": {
     "fetchedAt": "2025-09-24T07:08:21.231Z",
     "source": "github-api",
