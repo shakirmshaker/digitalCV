@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
   const GITHUB_OWNER = process.env.GITHUB_OWNER || 'shakirmshaker';
-  const GITHUB_REPO = process.env.GITHUB_REPO || 'nyCV';
+  const GITHUB_REPO = process.env.GITHUB_REPO || 'digitalCV';
 
   const status = {
     configured: false,

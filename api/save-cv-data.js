@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     // GitHub configuration from environment variables
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     const GITHUB_OWNER = process.env.GITHUB_OWNER || 'shakirmshaker';
-    const GITHUB_REPO = process.env.GITHUB_REPO || 'nyCV';
+    const GITHUB_REPO = process.env.GITHUB_REPO || 'digitalCV';
     const BRANCH = process.env.GITHUB_BRANCH || 'master';
 
     if (!GITHUB_TOKEN) {
