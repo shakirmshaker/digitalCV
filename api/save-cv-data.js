@@ -36,8 +36,8 @@ export default async function handler(req, res) {
 
     // Paths to update (both files)
     const filePaths = [
-      'cv/src/data/cvData.json',
-      'cv/public/data/cvData.json'
+      'src/data/cvData.json',
+      'public/data/cvData.json'
     ];
 
     const updatedFiles = [];
