@@ -2,9 +2,33 @@ const express = require('express');
 const fs = require('fs').promises;
 const path = require('path');
 const cors = require('cors');
+const multer = require('multer');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Multer configuration for profile image uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, 'public', 'images'));
+  },
+  filename: (req, file, cb) => {
+    cb(null, 'profile.jpg');
+  }
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    if (allowedTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only JPEG, PNG, and WebP images are allowed'));
+    }
+  }
+});
 
 // Middleware
 app.use(cors());
@@ -64,6 +88,27 @@ app.get('/api/cv-data', async (req, res) => {
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'Server is running', port: PORT });
+});
+
+// Upload profile image endpoint
+app.post('/api/upload-profile-image', upload.single('profileImage'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ success: false, error: 'No file uploaded' });
+    }
+
+    console.log('Profile image uploaded:', req.file.filename);
+    console.log('File size:', req.file.size, 'bytes');
+
+    res.json({
+      success: true,
+      message: 'Profile image uploaded successfully',
+      filename: req.file.filename
+    });
+  } catch (error) {
+    console.error('Error uploading profile image:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
 });
 
 app.listen(PORT, () => {

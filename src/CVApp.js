@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { User, Briefcase, Mail, Phone, MapPin, Linkedin, Github, Edit, Save, X, Plus, Trash2, Download } from 'lucide-react';
+import { User, Briefcase, Mail, Phone, MapPin, Linkedin, Github, Edit, Save, X, Plus, Trash2, Download, Camera } from 'lucide-react';
 import jsPDF from 'jspdf';
-import profileImage from './shakirmshakerLinkedInBillede.jpeg';
-// Dynamic import - removed static import to prevent caching
 
 // Logos
 import reactLogo from './assets/react.svg';
@@ -29,6 +27,8 @@ const CVApp = ({ isAuthenticated }) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [cvData, setCvData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [profileImageUrl, setProfileImageUrl] = useState('/images/profile.jpg');
+  const fileInputRef = useRef(null);
 
   const skills = [
     {
@@ -163,6 +163,88 @@ const CVApp = ({ isAuthenticated }) => {
   const refreshData = async () => {
     setIsLoading(true);
     await fetchCvData();
+  };
+
+  // Handle profile image upload
+  const handleProfileImageUpload = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Validate file size (5MB limit)
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Image must be less than 5MB');
+      return;
+    }
+
+    // Validate file type
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    if (!allowedTypes.includes(file.type)) {
+      alert('Only JPEG, PNG, and WebP images are allowed');
+      return;
+    }
+
+    const isLocalhost = window.location.hostname === 'localhost' ||
+                       window.location.hostname === '127.0.0.1';
+
+    try {
+      if (isLocalhost) {
+        // Local development: Use FormData with multer
+        const formData = new FormData();
+        formData.append('profileImage', file);
+
+        const response = await fetch('http://localhost:3001/api/upload-profile-image', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          const result = await response.json();
+          throw new Error(result.error || 'Upload failed');
+        }
+
+        // Update image URL with cache-busting parameter
+        setProfileImageUrl(`/images/profile.jpg?t=${Date.now()}`);
+        alert('Profile image updated successfully!');
+      } else {
+        // Production (Vercel): Convert to base64 and send to GitHub
+        const reader = new FileReader();
+        reader.onload = async (e) => {
+          const base64Data = e.target?.result;
+          if (!base64Data) return;
+
+          try {
+            const response = await fetch('/api/upload-profile-image', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ imageData: base64Data }),
+            });
+
+            if (!response.ok) {
+              const result = await response.json();
+              throw new Error(result.error || 'Upload failed');
+            }
+
+            // Update image URL with cache-busting parameter
+            setProfileImageUrl(`/images/profile.jpg?t=${Date.now()}`);
+            alert('Profile image updated successfully! Changes will be live after Vercel redeploys.');
+          } catch (error) {
+            console.error('Upload error:', error);
+            alert(`Failed to upload image: ${error.message}`);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    } catch (error) {
+      console.error('Upload error:', error);
+      alert(`Failed to upload image: ${error.message}`);
+    }
+
+    // Reset file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   // Expose refresh function to window for debugging
@@ -456,7 +538,7 @@ const CVApp = ({ isAuthenticated }) => {
           };
           img.onerror = reject;
           img.crossOrigin = 'anonymous';
-          img.src = profileImage;
+          img.src = profileImageUrl;
         });
 
         // Convert canvas to base64 with maximum quality
@@ -750,7 +832,7 @@ const CVApp = ({ isAuthenticated }) => {
 
     // Save the PDF
     pdf.save(`${cvData.profileData.name.replace(/\s+/g, '_')}_CV.pdf`);
-  }, [cvData]);
+  }, [cvData, profileImageUrl]);
 
   // Function to fetch fresh JSON data
   const fetchCvData = async () => {
@@ -1286,14 +1368,32 @@ const CVApp = ({ isAuthenticated }) => {
           </div>
 
           <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
-            <div className="shrink-0 h-[200px] md:h-auto md:w-[400px] bg-gray-900 relative">
+            <div className="shrink-0 h-[200px] md:h-auto md:w-[400px] bg-gray-900 relative group">
               <div className="absolute inset-0">
                 <img
-                  src={profileImage}
+                  src={profileImageUrl}
                   alt="Profile"
                   className="w-full h-full object-cover object-top md:object-center opacity-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900"></div>
+                {isEditMode && isAuthenticated && (
+                  <>
+                    <input
+                      type="file"
+                      ref={fileInputRef}
+                      onChange={handleProfileImageUpload}
+                      accept="image/jpeg,image/jpg,image/png,image/webp"
+                      className="hidden"
+                    />
+                    <div
+                      onClick={() => fileInputRef.current?.click()}
+                      className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer flex flex-col items-center justify-center z-10"
+                    >
+                      <Camera className="text-white mb-2" size={32} />
+                      <span className="text-white text-sm font-medium">Click to upload new image</span>
+                    </div>
+                  </>
+                )}
               </div>
               <div className="absolute bottom-4 md:bottom-12 left-0 right-0 px-4 md:px-6">
                 <div className="hidden md:block text-center">

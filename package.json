@@ -9,6 +9,7 @@
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.3",
     "lucide-react": "^0.469.0",
+    "multer": "^1.4.5-lts.1",
     "react": "^18.x",
     "react-dom": "^18.x",
     "react-router-dom": "^7.9.1",
@@ -17,6 +18,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.x",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.11",
     "postcss": "^8.x",
     "tailwindcss": "^3.x"
   },
