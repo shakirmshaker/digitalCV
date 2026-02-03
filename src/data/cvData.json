@@ -6,7 +6,7 @@
     "email": "shakir.m.shaker@gmail.com",
     "phone": "+45 50 41 42 87",
     "linkedin": "www.linkedin.com/in/shakir-m-shaker-3212a8168",
-    "bio": "AI Leader specializing in AI-driven personalization and customer experience optimization. Proven track record leading cross-functional teams to deliver production AI & ML solutions that drive measurable business impact. Expert in translating complex AI capabilities into strategic business outcomes through stakeholder collaboration and agile delivery. "
+    "bio": "I build AI systems that solve real problems. Over the past few years, I've taken companies from having no AI to running it across their operations - from web agents handling customer inquiries to ML models predicting patient outcomes. I'm hands-on technical but also comfortable working with leadership to figure out where AI actually makes sense."
   },
   "technicalSkills": [
     {
@@ -39,31 +39,31 @@
       "title": "Head of AI",
       "company": "Modstrøm",
       "period": "2023 - Present",
-      "description": "- Transformed the organization from zero AI capability to fully AI-driven operations, establishing comprehensive AI strategy and infrastructure from ground up\n- Built and led AI function across all business units, implementing LLMs and ML solutions that fundamentally changed organizational decision-making processes\n- Defined and executed AI roadmap in collaboration with C-suite stakeholders, ensuring alignment between technical capabilities and business objectives\n- Mentored cross-functional teams on AI adoption, creating culture of data-driven innovation"
+      "description": "- Joined when the company had zero AI - now it runs through most of what we do\n- Architected and deployed web agents on our websites that handle both lead generation and customer support autonomously\n- Built an automatic email drafting system for customer service that now generates 4,000+ email drafts monthly\n- Led the call transcription project - we use it to spot trends, extract action items, flag follow-ups, and catch unhappy customers before they churn\n- Work directly with the C-suite to decide where AI fits and where it doesn't"
     },
     {
       "title": "Founder",
       "company": "Lexii",
       "period": "2023 - Present",
-      "description": "- Solo-architected and deployed end-to-end AI email client serving currently 50+ daily active users\n- Built production-grade personalization engine using LLMs and vector search for contextual email understanding\n- Managed entire product lifecycle from conception through deployment, including user feedback integration and iterative improvements"
+      "description": "- Built an AI email client from scratch - handles everything from understanding context to drafting replies\n- Currently used by 50+ daily active users\n- Did all the technical work myself: backend, frontend, LLM integration, and deployment"
     },
     {
       "title": "AI Engineer",
       "company": "Medley VC",
       "period": "2022 - 2023",
-      "description": "Engaged with teams to raise awareness of AI potential, ensuring users understood AI capabilities and limitations in their day-today operations. Identified and refined use cases for AI tools in business intelligence and energy recommendations, contributing to operational efficiency and improved decision-making."
+      "description": "Worked across portfolio companies to find where AI could actually help. Built tools for business intelligence and energy recommendations. Spent a lot of time helping teams understand what AI can and can't do - important when expectations are high."
     },
     {
       "title": "Research Assistant",
       "company": "Hvidovre Hospital",
       "period": "2022",
-      "description": "Developed and implemented machine learning models to predict short and long-term mortality in acutely hospitalized patients. Led the technical development and data analysis that resulted in a published research paper. Applied sophisticated ML techniques to analyze patient data and create predictive models with direct clinical applications."
+      "description": "Built ML models to predict mortality risk in acutely hospitalized patients. Led the technical work and data analysis. The research got published - one of those projects where the models actually have a chance to help real patients."
     },
     {
       "title": "Associate",
       "company": "KPMG",
       "period": "2021 - 2022",
-      "description": "Advised top-tier clients on AI and data science strategies, focusing on improving quality processes and operational efficiency through automation and data-driven insights. Collaborated closely with clients to identify AI use cases and deploy tailored AI tools that addressed specific business challenges."
+      "description": "Consulted on AI and data projects for large clients. Helped them figure out which problems were actually worth solving with AI, then built the tools to do it. Learned a lot about how big organizations adopt (or resist) new technology."
     }
   ],
   "education": [
@@ -71,13 +71,13 @@
       "degree": "Master of Engineering - Human-Centered Artificial Intelligence",
       "school": "Technical University of Denmark",
       "period": "",
-      "description": "Focusing on the intersection of AI, human-interaction, and Large Language Models. Completed in 2 years next to my full-time job. Thesis Grade: 12/12, GPA: 10.1/12"
+      "description": "Focused on AI, human interaction, and LLMs. Did this in 2 years while working full-time. Thesis: 12/12, GPA: 10.1/12"
     },
     {
       "degree": "Bachelor of Science - Data Science",
       "school": "IT University of Copenhagen",
       "period": "",
-      "description": "Specialized in machine learning, data visualization, and data-driven decision-making. Completed the degree in 1 year and 9 months."
+      "description": "Machine learning, data visualization, statistics. Finished in 1 year and 9 months."
     }
   ],
   "lastSaved": "2025-09-24T07:14:47.519Z",
