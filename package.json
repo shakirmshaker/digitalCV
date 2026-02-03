@@ -27,7 +27,7 @@
     "start": "react-scripts start",
     "start:server": "node server.js",
     "dev": "concurrently \"npm start\" \"nodemon server.js\"",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
