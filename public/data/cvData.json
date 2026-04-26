@@ -39,13 +39,13 @@
       "title": "Head of AI",
       "company": "Modstrøm",
       "period": "2023 - Present",
-      "description": "- Joined when the company had zero AI - now it runs through most of what we do\n- Architected and deployed web agents on our websites that handle both lead generation and customer support autonomously\n- Built an automatic email drafting system for customer service that now generates 4,000+ email drafts monthly\n- Led the call transcription project - we use it to spot trends, extract action items, flag follow-ups, and catch unhappy customers before they churn\n- Work directly with the C-suite to decide where AI fits and where it doesn't"
+      "description": "- Joined when the company had zero AI - now it runs through most of what we do\n- Architected and deployed web agents on our websites that handle both lead generation and customer support autonomously\n- Built an automatic email drafting system for customer service that has drafted 40,000+ emails to date\n- Led the call transcription project - we use it to spot trends, extract action items, flag follow-ups, and catch unhappy customers before they churn\n- Work directly with the C-suite to decide where AI fits and where it doesn't"
     },
     {
-      "title": "Founder",
+      "title": "Founder & Engineer (side project)",
       "company": "Lexii",
       "period": "2023 - Present",
-      "description": "- Built an AI email client from scratch - handles everything from understanding context to drafting replies\n- Currently used by 50+ daily active users\n- Did all the technical work myself: backend, frontend, LLM integration, and deployment"
+      "description": "- Designed and shipped a production AI email client end-to-end: context retrieval, LLM-driven drafting, and a multi-tenant inbox sync layer\n- Built the full stack solo - backend, frontend, LLM/RAG pipeline, auth, and deployment - and operate it in production for a real user base\n- A practical sandbox for keeping my LLM application skills sharp on problems I don't get to touch in my main role"
     },
     {
       "title": "AI Engineer",
