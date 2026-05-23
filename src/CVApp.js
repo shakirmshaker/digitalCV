@@ -604,6 +604,27 @@ const CVApp = ({ isAuthenticated }) => {
         sideY += 4;
       }
 
+      // Online CV link in sidebar
+      sideY += 3;
+      pdf.setTextColor(...colors.accent);
+      pdf.setFontSize(9);
+      pdf.text('ONLINE CV', 5, sideY);
+      sideY += 3.5;
+
+      pdf.setTextColor(220, 220, 220);
+      const onlineCvUrl = 'https://digital-cv-three.vercel.app/';
+      const onlineCvText = 'digital-cv-three.vercel.app';
+      pdf.text(onlineCvText, 5, sideY);
+
+      const onlineCvWidth = pdf.getTextWidth(onlineCvText);
+      pdf.setDrawColor(220, 220, 220);
+      pdf.setLineWidth(0.2);
+      pdf.line(5, sideY + 0.5, 5 + onlineCvWidth, sideY + 0.5);
+
+      pdf.link(5, sideY - 3, onlineCvWidth, 4, { url: onlineCvUrl });
+
+      sideY += 4;
+
       // Skills in sidebar
       sideY += 10;
       if (sideY < pageHeight - 30) { // Adjusted threshold to show expertise section
