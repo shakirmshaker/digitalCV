@@ -43,20 +43,15 @@ app.post('/api/save-cv-data', async (req, res) => {
     const cvData = req.body;
     console.log('Saving CV data, name:', cvData.profileData?.name);
 
-    // Save to both locations to keep them in sync
     const srcPath = path.join(__dirname, 'src', 'data', 'cvData.json');
-    const publicPath = path.join(__dirname, 'public', 'data', 'cvData.json');
 
     console.log('Writing to:', srcPath);
-    console.log('Writing to:', publicPath);
 
     const jsonData = JSON.stringify(cvData, null, 2);
 
-    // Write to both files
     await fs.writeFile(srcPath, jsonData, 'utf8');
-    await fs.writeFile(publicPath, jsonData, 'utf8');
 
-    console.log('CV data saved successfully to both locations');
+    console.log('CV data saved successfully');
     console.log('Data size:', jsonData.length, 'bytes');
 
     res.json({ success: true, message: 'Data saved successfully' });

@@ -4,17 +4,11 @@ import jsPDF from 'jspdf';
 
 // Logos
 import reactLogo from './assets/react.svg';
-import flaskLogo from './assets/flask.svg';
 import fastApiLogo from './assets/fastapi.svg';
-import tensorflowLogo from './assets/tensorflow.svg';
-import powerbiLogo from './assets/powerbi.svg';
-import tableauLogo from './assets/tableau.svg';
 import postgresLogo from './assets/postgresql.svg';
-import snowflakeLogo from './assets/snowflake.svg';
 import azureLogo from './assets/azure.svg';
 import openaiLogo from './assets/openai-2.svg';
-import langchainLogo from './assets/langchain.svg';
-import pandasLogo from './assets/pandas.svg';
+import anthropicLogo from './assets/claude.jpg';
 
 // project images
 import egAnbefalerImage from './projects/egAnbefaler.png';
@@ -32,10 +26,18 @@ const CVApp = ({ isAuthenticated }) => {
 
   const skills = [
     {
-      name: "Flask",
+      name: "Claude",
       element: (
         <div className="w-24 h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
-          <img src={flaskLogo} alt="Flask" className="w-full h-full object-contain invert brightness-0" />
+          <img src={anthropicLogo} alt="Claude" className="w-full h-full object-contain" />
+        </div>
+      )
+    },
+    {
+      name: "OpenAI",
+      element: (
+        <div className="w-24 h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
+          <img src={openaiLogo} alt="OpenAI" className="w-full h-full object-contain invert brightness-0" />
         </div>
       )
     },
@@ -48,10 +50,10 @@ const CVApp = ({ isAuthenticated }) => {
       )
     },
     {
-      name: "Power BI",
+      name: "React",
       element: (
         <div className="w-24 h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
-          <img src={powerbiLogo} alt="Power BI" className="w-full h-full object-contain invert brightness-0" />
+          <img src={reactLogo} alt="React" className="w-full h-full object-contain" />
         </div>
       )
     },
@@ -64,66 +66,10 @@ const CVApp = ({ isAuthenticated }) => {
       )
     },
     {
-      name: "Tableau",
-      element: (
-        <div className="w-24 h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
-          <img src={tableauLogo} alt="Tableau" className="w-full h-full object-contain" />
-        </div>
-      )
-    },
-    {
-      name: "React",
-      element: (
-        <div className="w-24 h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
-          <img src={reactLogo} alt="React" className="w-full h-full object-contain" />
-        </div>
-      )
-    },
-    {
-      name: "Snowflake",
-      element: (
-        <div className="w-24 h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
-          <img src={snowflakeLogo} alt="Snowflake" className="w-full h-full object-contain" />
-        </div>
-      )
-    },
-    {
-      name: "TensorFlow",
-      element: (
-        <div className="w-24 h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
-          <img src={tensorflowLogo} alt="TensorFlow" className="w-full h-full object-contain" />
-        </div>
-      )
-    },
-    {
       name: "Azure",
       element: (
         <div className="w-24 h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
           <img src={azureLogo} alt="Azure" className="w-full h-full object-contain" />
-        </div>
-      )
-    },
-    {
-      name: "OpenAI",
-      element: (
-        <div className="w-24 h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
-          <img src={openaiLogo} alt="OpemAI" className="w-full h-full object-contain invert brightness-0" />
-        </div>
-      )
-    },
-    {
-      name: "LangChain",
-      element: (
-        <div className="w-24 h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
-          <img src={langchainLogo} alt="LangChain" className="w-full h-full object-contain invert brightness-0" />
-        </div>
-      )
-    },
-    {
-      name: "Pandas",
-      element: (
-        <div className="w-24 h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
-          <img src={pandasLogo} alt="Pandas" className="w-full h-full object-contain" />
         </div>
       )
     },
@@ -664,30 +610,28 @@ const CVApp = ({ isAuthenticated }) => {
         pdf.setFontSize(13);
         pdf.setFont('helvetica', 'bold');
         pdf.setTextColor(...colors.white);
-        pdf.text('EXPERTISE', 5, sideY);
+        pdf.text('HOW I WORK', 5, sideY);
         sideY += 10;
 
         pdf.setFontSize(9);
-        cvData.technicalSkills.forEach(category => {
-          if (sideY > pageHeight - 15) return; // Adjusted to allow more content
+        cvData.capabilities.forEach(capability => {
+          if (sideY > pageHeight - 15) return;
 
           pdf.setTextColor(...colors.accent);
           pdf.setFont('helvetica', 'bold');
-          const categoryLines = pdf.splitTextToSize(category.category.toUpperCase(), 50); // Wrap category names if needed
-          categoryLines.forEach(line => {
+          const titleLines = pdf.splitTextToSize(capability.title.toUpperCase(), 50);
+          titleLines.forEach(line => {
             pdf.text(line, 5, sideY);
             sideY += 4;
           });
 
           pdf.setFont('helvetica', 'normal');
           pdf.setTextColor(200, 200, 200);
-          category.skills.forEach(skill => {
-            if (sideY > pageHeight - 10) return; // Adjusted to allow more content
-            const skillLines = pdf.splitTextToSize(`• ${skill}`, 48); // Wrap skill text if needed
-            skillLines.forEach(line => {
-              pdf.text(line, 7, sideY);
-              sideY += 4;
-            });
+          const descLines = pdf.splitTextToSize(capability.description, 50);
+          descLines.forEach(line => {
+            if (sideY > pageHeight - 10) return;
+            pdf.text(line, 5, sideY);
+            sideY += 4;
           });
           sideY += 3;
         });
@@ -900,10 +844,10 @@ const CVApp = ({ isAuthenticated }) => {
             description: 'Education description...'
           }
         ],
-        technicalSkills: [
+        capabilities: [
           {
-            category: 'Skills Category',
-            skills: ['Skill 1', 'Skill 2']
+            title: 'Capability',
+            description: 'Description of how I work in this area.'
           }
         ]
       });
@@ -1143,16 +1087,12 @@ const CVApp = ({ isAuthenticated }) => {
       </div>
 
       <div>
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">Areas of Expertise</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">How I Work</h2>
         <div className="space-y-4 md:space-y-6">
-          {cvData.technicalSkills.map((category, index) => (
+          {cvData.capabilities.map((capability, index) => (
             <div key={index} className="bg-gray-700/50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-emerald-400 mb-4">{category.category}</h3>
-              <ul className="space-y-2">
-                {category.skills.map((skill, skillIndex) => (
-                  <li key={skillIndex} className="text-gray-300">• {skill}</li>
-                ))}
-              </ul>
+              <h3 className="text-xl font-semibold text-emerald-400 mb-2">{capability.title}</h3>
+              <p className="text-gray-300 leading-relaxed">{capability.description}</p>
             </div>
           ))}
         </div>
@@ -1261,15 +1201,15 @@ const CVApp = ({ isAuthenticated }) => {
   ));
 
   const SkillsSection = React.memo(() => (
-    <div className="max-w-3xl">
-      <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">Tech Stack</h2>
-      <div className="grid grid-cols-3 md:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-12 p-2 justify-items-center">
+    <div className="max-w-3xl mt-12 pt-8 border-t border-gray-700">
+      <p className="text-xs uppercase tracking-wider text-gray-500 mb-4">Snippet of top tools</p>
+      <div className="grid grid-cols-4 md:grid-cols-6 gap-4 md:gap-6 p-2 justify-items-center opacity-80">
         {skills.map((skill, index) => (
           <div key={index} className="text-center">
-            <div className="w-24 h-24 md:w-24 md:h-24 bg-gray-700/50 flex items-center justify-center rounded p-4">
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-gray-700/30 flex items-center justify-center rounded p-2">
               <img src={skill.element.props.children.props.src} alt={skill.name} className="w-full h-full object-contain" />
             </div>
-            <p className="mt-2 md:mt-4 text-gray-300 text-base md:text-lg">{skill.name}</p>
+            <p className="mt-2 text-gray-400 text-xs md:text-sm">{skill.name}</p>
           </div>
         ))}
       </div>

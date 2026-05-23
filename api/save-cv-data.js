@@ -31,105 +31,65 @@ export default async function handler(req, res) {
       });
     }
 
-    // GitHub API base URL
     const baseUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}`;
+    const filePath = 'src/data/cvData.json';
 
-    // Paths to update (both files)
-    const filePaths = [
-      'src/data/cvData.json',
-      'public/data/cvData.json'
-    ];
-
-    const updatedFiles = [];
-    const errors = [];
-
-    // Update each file
-    for (const filePath of filePaths) {
-      try {
-        // Step 1: Get the current file to get its SHA
-        const getFileResponse = await fetch(
-          `${baseUrl}/contents/${filePath}?ref=${BRANCH}`,
-          {
-            headers: {
-              'Authorization': `Bearer ${GITHUB_TOKEN}`,
-              'Accept': 'application/vnd.github.v3+json',
-            }
-          }
-        );
-
-        if (!getFileResponse.ok) {
-          const errorText = await getFileResponse.text();
-          console.error(`Failed to get ${filePath}:`, errorText);
-          errors.push(`Failed to get ${filePath}: ${getFileResponse.status}`);
-          continue;
+    const getFileResponse = await fetch(
+      `${baseUrl}/contents/${filePath}?ref=${BRANCH}`,
+      {
+        headers: {
+          'Authorization': `Bearer ${GITHUB_TOKEN}`,
+          'Accept': 'application/vnd.github.v3+json',
         }
-
-        const fileData = await getFileResponse.json();
-        const currentSha = fileData.sha;
-
-        // Step 2: Update the file
-        const content = Buffer.from(JSON.stringify(cvData, null, 2)).toString('base64');
-
-        const updateResponse = await fetch(
-          `${baseUrl}/contents/${filePath}`,
-          {
-            method: 'PUT',
-            headers: {
-              'Authorization': `Bearer ${GITHUB_TOKEN}`,
-              'Accept': 'application/vnd.github.v3+json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              message: `Update CV data via web interface`,
-              content: content,
-              sha: currentSha,
-              branch: BRANCH
-            })
-          }
-        );
-
-        if (!updateResponse.ok) {
-          const errorText = await updateResponse.text();
-          console.error(`Failed to update ${filePath}:`, errorText);
-          errors.push(`Failed to update ${filePath}: ${updateResponse.status}`);
-          continue;
-        }
-
-        const updateResult = await updateResponse.json();
-        updatedFiles.push({
-          path: filePath,
-          commit: updateResult.commit.sha
-        });
-
-        console.log(`Successfully updated ${filePath}`);
-      } catch (error) {
-        console.error(`Error updating ${filePath}:`, error);
-        errors.push(`Error updating ${filePath}: ${error.message}`);
       }
-    }
+    );
 
-    // Return appropriate response
-    if (updatedFiles.length === 0) {
+    if (!getFileResponse.ok) {
+      const errorText = await getFileResponse.text();
+      console.error(`Failed to get ${filePath}:`, errorText);
       return res.status(500).json({
         success: false,
-        message: 'Failed to update any files',
-        errors: errors
+        message: `Failed to get ${filePath}: ${getFileResponse.status}`
       });
     }
 
-    if (errors.length > 0) {
-      return res.status(207).json({
-        success: true,
-        message: `Partially updated: ${updatedFiles.length} file(s) successful`,
-        updated: updatedFiles,
-        errors: errors
+    const fileData = await getFileResponse.json();
+    const content = Buffer.from(JSON.stringify(cvData, null, 2)).toString('base64');
+
+    const updateResponse = await fetch(
+      `${baseUrl}/contents/${filePath}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${GITHUB_TOKEN}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: `Update CV data via web interface`,
+          content: content,
+          sha: fileData.sha,
+          branch: BRANCH
+        })
+      }
+    );
+
+    if (!updateResponse.ok) {
+      const errorText = await updateResponse.text();
+      console.error(`Failed to update ${filePath}:`, errorText);
+      return res.status(500).json({
+        success: false,
+        message: `Failed to update ${filePath}: ${updateResponse.status}`
       });
     }
+
+    const updateResult = await updateResponse.json();
+    console.log(`Successfully updated ${filePath}`);
 
     return res.status(200).json({
       success: true,
       message: 'CV data saved successfully to GitHub',
-      updated: updatedFiles
+      updated: { path: filePath, commit: updateResult.commit.sha }
     });
 
   } catch (error) {

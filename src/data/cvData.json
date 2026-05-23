@@ -6,32 +6,20 @@
     "email": "shakir.m.shaker@gmail.com",
     "phone": "+45 50 41 42 87",
     "linkedin": "www.linkedin.com/in/shakir-m-shaker-3212a8168",
-    "bio": "I build AI systems that solve real problems. Over the past few years, I've taken companies from having no AI to running it across their operations - from web agents handling customer inquiries to ML models predicting patient outcomes. I'm hands-on technical but also comfortable working with leadership to figure out where AI actually makes sense."
+    "bio": "I help companies turn AI from concept into measurable business outcomes. Over the past few years, I've led companies from zero AI adoption to embedding it across core operations - shipping AI projects across email, web, and voice. I set the direction for what to build next, dig into user needs to find where AI actually moves the KPIs, and stay hands-on through delivery."
   },
-  "technicalSkills": [
+  "capabilities": [
     {
-      "category": "AI & Machine Learning",
-      "skills": [
-        "LLM Implementation",
-        "RAG Systems Development",
-        "Machine Learning Model Development"
-      ]
+      "title": "Setting AI Direction",
+      "description": "Aligning AI investment with business priorities and where the company is heading."
     },
     {
-      "category": "Backend Development",
-      "skills": [
-        "LLM Application Architecture",
-        "API Development",
-        "Web Application Backend"
-      ]
+      "title": "Finding the Right Bets",
+      "description": "Identifying user needs and use cases where AI actually moves the KPIs."
     },
     {
-      "category": "Data Engineering",
-      "skills": [
-        "Postgres & Snowflake",
-        "PowerBI & Tableau",
-        "Pandas & Spark"
-      ]
+      "title": "Shipping End-to-End",
+      "description": "Leading delivery from prototype to production, staying hands-on through ship."
     }
   ],
   "experience": [
